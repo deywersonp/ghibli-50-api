@@ -1,0 +1,118 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Ghibli.50 API - Documentação",
+    "description": "Está API cadastra e retorna informações sobre os filmes do estúdio Ghibli.",
+    "version": "1.0.0",
+    "contact": {
+      "email": "deywerson.pereira@gmail.com"
+    }
+  },
+  "paths": {
+    "/films/ghibli": {
+      "post": {
+        "tags": [
+          "Filmes"
+        ],
+        "summary": "Adiciona filmes do estúdio Ghibli ao banco de dados",
+        "description": "Adiciona ao banco de dados todos os filmes do estúdio Ghibli, limitado a 50 registros e retorna o valor total de filmes adicionados. Não adiciona registros com id duplicado.",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "added_films": {
+                      "type": "object",
+                      "properties": {
+                        "count": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/films": {
+      "get": {
+        "tags": [
+          "Filmes"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "description": "número da página"
+          }
+        ],
+        "summary": "Lista todos os filmes",
+        "description": "Retorna até 10 filmes de forma paginada. Pode receber um parâmetro de query para informar o valor da página a ser retornada.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "films": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "banner": {
+                            "type": "string"
+                          },
+                          "producer": {
+                            "type": "string"
+                          },
+                          "director": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "next_page": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "No films found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
