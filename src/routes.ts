@@ -5,13 +5,11 @@ import { FilmResponse } from './interfaces';
 
 export const routes = express.Router();
 
-routes.get('/ghibli-films', async (req, res) => {
+routes.post('/films/ghibli', async (req, res) => {
   try {
     const { data } = await axios.get<FilmResponse[]>('https://ghibliapi.herokuapp.com/films?limit=50');
 
-    const all50Films = data.concat(...data, ...data).filter((_, index) => index < 50);
-
-    const films = all50Films.map((film, index) => ({
+    const films = data.map((film, index) => ({
       id: index + 1,
       title: film.title,
       description: film.description,
@@ -20,12 +18,12 @@ routes.get('/ghibli-films', async (req, res) => {
       banner: film.image,
     }));
 
-    const addedFilms = await prisma.film.createMany({
+    const added_films = await prisma.film.createMany({
       data: films,
       skipDuplicates: true,
     });
 
-    res.status(200).send({ addedFilms });
+    res.status(201).send({ added_films });
   } catch (err) {
     console.log(err);
     res.status(400).send();
@@ -62,6 +60,6 @@ routes.get('/films', async (req, res) => {
     res.status(200).send({ films: paginatedFilms, next_page });
   } catch (err) {
     //@ts-ignore
-    res.status(400).send({ error: err.message })
+    res.status(500).send({ error: err.message })
   }
 });
