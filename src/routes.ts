@@ -12,7 +12,7 @@ routes.get('/ghibli-films', async (req, res) => {
     const all50Films = data.concat(...data, ...data).filter((_, index) => index < 50);
 
     const films = all50Films.map((film, index) => ({
-      id: index,
+      id: index + 1,
       title: film.title,
       description: film.description,
       director: film.director,
