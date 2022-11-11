@@ -50,7 +50,7 @@ routes.get('/films', async (req, res) => {
     const pageStart = (Number(page) - 1) * per_page;
     const pageEnd = pageStart + per_page;
 
-    if (pageStart >= total) {
+    if (pageStart >= total || pageEnd >= total) {
       next_page = false;
     }
 
