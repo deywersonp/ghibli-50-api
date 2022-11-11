@@ -39,4 +39,38 @@ app.get('/ghibli-films', async (req, res) => {
   }
 });
 
+app.get('/films', async (req, res) => {
+  try {
+    let page = req.query.page;
+    let next_page = true;
+    const per_page = 10;
+
+    if (!page) {
+      page = "1";
+    }
+
+    const allFilms = await prisma.film.findMany();
+
+    if (!allFilms.length) {
+      throw new Error('No films found');
+    }
+
+    const total = allFilms.length;
+    const pageStart = (Number(page) - 1) * Number(per_page);
+    const pageEnd = pageStart + Number(per_page);
+
+    if (pageStart >= total) {
+      next_page = false;
+    }
+
+    const paginatedFilms = allFilms.slice(pageStart, pageEnd);
+
+    res.set('x-total-count', String(total));
+    res.status(200).send({ films: paginatedFilms, next_page });
+  } catch (err) {
+    //@ts-ignore
+    res.status(400).send({ error: err.message })
+  }
+});
+
 app.listen(3333, () => console.log('Running on PORT 3333'));
