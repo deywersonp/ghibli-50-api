@@ -6,3 +6,6 @@
 
 #build
 /build/
+
+#env
+.env
