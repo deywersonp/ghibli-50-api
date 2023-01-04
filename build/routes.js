@@ -5,9 +5,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.routes = void 0;
 const express_1 = __importDefault(require("express"));
+const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const prisma_1 = require("./services/prisma");
 const data_1 = require("./data");
+const swagger_json_1 = __importDefault(require("./swagger.json"));
 exports.routes = express_1.default.Router();
+const options = { customCssUrl: '/public/css/swagger-ui.css' };
+exports.routes.use('/api-docs-ui', (req, res, next) => {
+    //@ts-ignore
+    swagger_json_1.default.host = req.get('host');
+    req.swaggerDoc = swagger_json_1.default;
+    next();
+}, swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swagger_json_1.default, options));
 exports.routes.post('/films/ghibli', async (req, res) => {
     try {
         // const { data } = await axios.get<FilmResponse[]>('https://ghibliapi.herokuapp.com/films?limit=50');
