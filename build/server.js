@@ -12,7 +12,7 @@ const swagger_json_1 = __importDefault(require("./swagger.json"));
 const app = (0, express_1.default)();
 const ROOT_FOLDER = path_1.default.join(__dirname, '..');
 const SRC_FOLDER = path_1.default.join(ROOT_FOLDER, 'src');
-const options = { customCssUrl: '/public/swagger-ui.css', customSiteTitle: "The Words That I Know API - Swagger" };
+const options = { customCssUrl: '/public/swagger-ui.css', customSiteTitle: "Ghibli.50 API - Swagger Documentation" };
 app.use((0, cors_1.default)({
     exposedHeaders: 'x-total-count'
 }));

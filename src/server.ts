@@ -10,7 +10,7 @@ const app = express();
 
 const ROOT_FOLDER = path.join(__dirname, '..');
 const SRC_FOLDER = path.join(ROOT_FOLDER, 'src');
-const options = { customCssUrl: '/public/swagger-ui.css', customSiteTitle: "The Words That I Know API - Swagger" };
+const options = { customCssUrl: '/public/swagger-ui.css', customSiteTitle: "Ghibli.50 API - Swagger Documentation" };
 
 app.use(cors({
   exposedHeaders: 'x-total-count'
