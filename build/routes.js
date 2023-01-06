@@ -10,8 +10,8 @@ const prisma_1 = require("./services/prisma");
 const data_1 = require("./data");
 const swagger_json_1 = __importDefault(require("./swagger.json"));
 exports.routes = express_1.default.Router();
-const options = { customCssUrl: '/public/css/swagger-ui.css' };
-exports.routes.use('/api-docs-ui', (req, res, next) => {
+const options = { customCssUrl: __dirname + '/public/css/swagger-ui.css' };
+exports.routes.use('/api-docs', (req, res, next) => {
     //@ts-ignore
     swagger_json_1.default.host = req.get('host');
     req.swaggerDoc = swagger_json_1.default;

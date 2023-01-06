@@ -6,9 +6,9 @@ import swaggerFile from "./swagger.json";
 
 export const routes = express.Router();
 
-const options = { customCssUrl: '/public/css/swagger-ui.css' };
+const options = { customCssUrl: __dirname + '/public/css/swagger-ui.css' };
 
-routes.use('/api-docs-ui', (req: any, res: any, next: any) => {
+routes.use('/api-docs', (req: any, res: any, next: any) => {
   //@ts-ignore
   swaggerFile.host = req.get('host');
   req.swaggerDoc = swaggerFile;
