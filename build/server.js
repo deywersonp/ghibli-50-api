@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
-const body_parser_1 = __importDefault(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const swagger_json_1 = __importDefault(require("./swagger.json"));
@@ -14,9 +13,9 @@ const app = (0, express_1.default)();
 const ROOT_FOLDER = path_1.default.join(__dirname, '..');
 const SRC_FOLDER = path_1.default.join(ROOT_FOLDER, 'src');
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(body_parser_1.default.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 // parse requests of content-type - application/json
-app.use(body_parser_1.default.json());
+// app.use(bodyParser.json());
 const options = { customCssUrl: '/public/css/swagger-ui.css', customSiteTitle: "Ghibli.50 API - Swagger Documentation" };
 app.use((0, cors_1.default)({
     exposedHeaders: 'x-total-count'
