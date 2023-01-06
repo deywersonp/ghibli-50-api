@@ -106,6 +106,7 @@ As principais features dessa aplicação são:
 
 - Adicionar os filmes do estúdio Ghibli na API (limitado a 50)
 - Listar os filmes de forma paginada, de 10 em 10
+- A documentação da API está disponível em <a target="_blank" rel="noreferrer noopener" href="https://ghibli-50-api.vercel.app/">https://ghibli-50-api.vercel.app/</a>
 
 <br>
 
