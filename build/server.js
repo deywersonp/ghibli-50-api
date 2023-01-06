@@ -12,7 +12,7 @@ app.use((0, cors_1.default)({
     exposedHeaders: 'x-total-count'
 }));
 app.use(express_1.default.json());
-app.use('/public/css', express_1.default.static('public/css'));
+app.use(express_1.default.static(__dirname + '/public/'));
 app.use(routes_1.routes);
 app.listen(process.env.PORT || 3333, () => {
     console.log('HTTP Server Running!');

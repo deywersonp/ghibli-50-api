@@ -12,7 +12,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.use('/public/css', express.static('public/css'));
+app.use(express.static(__dirname + '/public/'));
 app.use(routes);
 
 app.listen(process.env.PORT || 3333, () => {
