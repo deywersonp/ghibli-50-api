@@ -59,6 +59,14 @@ Se possui interesse em executar o código, comece clonando o repositório utiliz
 
 </br>
 
+### Abordagem 1: Docker
+- Abordagem mais prática que dispensa instalação das ferramentas, basta possuir o [Docker / Docker Compose](https://www.docker.com/) instalado na máquina. Após clonar o projeto execute os comandos abaixo:
+- `docker compose up -d` -> Para gerar a imagem da API e baixar a imagem do PostgreSQL no Docker. A flag `-d` fará com que os containers continuem executando em segundo plano;
+-  `docker exec -it ghibli-50-api /bin/bash` -> Para acessar a linha de comando do container `ghibli-50-api`;
+-  `npx prisma migrate dev` -> Para criar as tabelas no banco de dados;
+-  Acesse [http://localhost:3333/](http://localhost:3333/) para visualizar a documentação;
+
+### Abordagem 2: Executar localmente
 - O projeto utiliza como banco de dados em desenvolvimento o <a href="https://www.postgresql.org/">PostgreSQL</a>. É necessário possuir o banco de dados instalado na máquina para que o projeto funcione conforme esperado
 - Ao instalar o PostgreSQL, abra o `pgAdmin4` </br>
 ![image](https://user-images.githubusercontent.com/79553681/201434817-daeba8c9-1e2b-4be3-ba66-3979ff76273c.png)
