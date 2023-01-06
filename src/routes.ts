@@ -1,19 +1,8 @@
 import express from 'express';
-import swaggerUi from "swagger-ui-express";
 import { prisma } from "./services/prisma";
 import { filmsData } from './data';
-import swaggerFile from "./swagger.json";
 
 export const routes = express.Router();
-
-const options = { customCssUrl: __dirname + '/public/css/swagger-ui.css' };
-
-routes.use('/api-docs', (req: any, res: any, next: any) => {
-  //@ts-ignore
-  swaggerFile.host = req.get('host');
-  req.swaggerDoc = swaggerFile;
-  next();
-}, swaggerUi.serve, swaggerUi.setup(swaggerFile, options));
 
 routes.post('/films/ghibli', async (req, res) => {
   try {

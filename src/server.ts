@@ -1,22 +1,37 @@
 import express from 'express';
+import path from 'path';
+import bodyParser from 'body-parser';
 import cors from 'cors';
+import swaggerUi from "swagger-ui-express";
+import swaggerFile from "./swagger.json";
 
 import { routes } from './routes';
 
 const app = express();
 
-// const options = { customCssUrl: '/public/css/swagger-ui.css', customSiteTitle: "Ghibli.50 API - Swagger Documentation" };
+const ROOT_FOLDER = path.join(__dirname, '..');
+const SRC_FOLDER = path.join(ROOT_FOLDER, 'src');
+
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
+
+const options = { customCssUrl: '/public/css/swagger-ui.css', customSiteTitle: "Ghibli.50 API - Swagger Documentation" };
 
 app.use(cors({
   exposedHeaders: 'x-total-count'
 }));
 
 app.use(express.json());
-app.use(express.static(__dirname + '/public/'));
+app.use('/public', express.static(path.join(SRC_FOLDER, 'public')));
+app.use('/', swaggerUi.serve);
+app.get('/', swaggerUi.setup(swaggerFile, options));
 app.use(routes);
 
 app.listen(process.env.PORT || 3333, () => {
   console.log('HTTP Server Running!');
 });
+
 
 module.exports = app;
