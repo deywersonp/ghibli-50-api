@@ -24,8 +24,6 @@
 
 **Ghibli.50 API** é uma API desenvolvida com o objetivo de cadastrar os filmes do Studio Ghibli no banco de dados e retornar essa informação de forma paginada para o cliente solicitante.
 
-_PS: A API responsável por retornar as informações dos filmes do studio Ghibli não está mais disponível, por este motivo os dados foram movidos para um arquivo estático dentro do projeto, que é utilizado para popular o banco de dados. Repositório da API do studio Ghibli inativo: [https://github.com/janaipakos/ghibliapi](https://github.com/janaipakos/ghibliapi)_.
-
 <br>
 
 ## 🚀 Tecnologias
@@ -43,9 +41,8 @@ O projeto foi desenvolvido utilizando estas tecnologias:
 
 ## 👨‍🔧 Serviços utilizados
 
-- GitHub
 - [Swagger](https://swagger.io/)
-- [Ghibli API](https://ghibliapi.herokuapp.com/#tag/Films)
+- [Ghibli API](https://ghibliapi.vercel.app/)
 
 <br>
 
