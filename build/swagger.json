@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Ghibli.50 API - Documentação",
-        "description": "Está API cadastra e retorna informações sobre os filmes do estúdio Ghibli.",
+        "description": "Está API cadastra e retorna informações sobre os filmes do Studio Ghibli.",
         "version": "1.0.0",
         "contact": {
             "email": "deywerson.pereira@gmail.com"
@@ -14,8 +14,8 @@
                 "tags": [
                     "Filmes"
                 ],
-                "summary": "Adiciona filmes do estúdio Ghibli ao banco de dados",
-                "description": "Adiciona ao banco de dados todos os filmes do estúdio Ghibli, limitado a 50 registros e retorna o valor total de filmes adicionados. Não adiciona registros com id duplicado.",
+                "summary": "Adiciona filmes do Studio Ghibli ao banco de dados",
+                "description": "Adiciona ao banco de dados todos os filmes do Studio Ghibli, limitado a 50 registros e retorna o valor total de filmes adicionados. Não adiciona registros com id duplicado.",
                 "responses": {
                     "201": {
                         "description": "Created",

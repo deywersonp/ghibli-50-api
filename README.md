@@ -22,7 +22,7 @@
 
 ## 💻 Projeto
 
-**Ghibli.50 API** é uma API desenvolvida com o objetivo de cadastrar os filmes do estúdio Ghibli no banco de dados e retornar essa informação de forma paginada para o cliente solicitante.
+**Ghibli.50 API** é uma API desenvolvida com o objetivo de cadastrar os filmes do Studio Ghibli no banco de dados e retornar essa informação de forma paginada para o cliente solicitante.
 
 _PS: A API responsável por retornar as informações dos filmes do studio Ghibli não está mais disponível, por este motivo os dados foram movidos para um arquivo estático dentro do projeto, que é utilizado para popular o banco de dados. Repositório da API do studio Ghibli inativo: [https://github.com/janaipakos/ghibliapi](https://github.com/janaipakos/ghibliapi)_.
 
@@ -114,7 +114,7 @@ _PS: A versão que estou utilizando é a 15x, windows, portanto pode haver algum
 
 As principais features dessa aplicação são:
 
-- Adicionar os filmes do estúdio Ghibli na API (limitado a 50)
+- Adicionar os filmes do Studio Ghibli na API (limitado a 50)
 - Listar os filmes de forma paginada, de 10 em 10
 - A documentação da API está disponível em <a target="_blank" rel="noreferrer noopener" href="https://ghibli-50-api.vercel.app/">https://ghibli-50-api.vercel.app/</a>
 
