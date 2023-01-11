@@ -5,13 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.routes = void 0;
 const express_1 = __importDefault(require("express"));
+const axios_1 = __importDefault(require("axios"));
 const prisma_1 = require("./services/prisma");
-const data_1 = require("./data");
 exports.routes = express_1.default.Router();
 exports.routes.post('/films/ghibli', async (req, res) => {
     try {
-        // const { data } = await axios.get<FilmResponse[]>('https://ghibliapi.herokuapp.com/films?limit=50');
-        const data = data_1.filmsData.films;
+        const { data } = await axios_1.default.get('https://ghibliapi.vercel.app/films?limit=50');
         const films = data.map((film, index) => ({
             id: index + 1,
             title: film.title,

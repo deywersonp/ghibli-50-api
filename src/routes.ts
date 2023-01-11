@@ -1,14 +1,13 @@
 import express from 'express';
+import axios from 'axios';
 import { prisma } from "./services/prisma";
-import { filmsData } from './data';
+import { FilmResponse } from './interfaces';
 
 export const routes = express.Router();
 
 routes.post('/films/ghibli', async (req, res) => {
   try {
-    // const { data } = await axios.get<FilmResponse[]>('https://ghibliapi.herokuapp.com/films?limit=50');
-
-    const data = filmsData.films;
+    const { data } = await axios.get<FilmResponse[]>('https://ghibliapi.vercel.app/films?limit=50');
 
     const films = data.map((film, index) => ({
       id: index + 1,
