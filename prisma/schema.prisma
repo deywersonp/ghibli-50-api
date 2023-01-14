@@ -11,10 +11,12 @@ datasource db {
 }
 
 model Film {
-  id          Int    @id
+  id          String   @id
+  ghibli_id   String   @unique
   title       String
   description String
   producer    String
   director    String
   banner      String
+  created_at  DateTime @default(now())
 }
