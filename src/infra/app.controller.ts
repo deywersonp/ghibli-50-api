@@ -1,11 +1,14 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 import { PrismaService } from './prisma.service';
-import { randomUUID } from 'node:crypto';
-import { CreateFilmBody } from './create-film-body';
+import { GhibliFilmsService } from './ghibli.films.service';
+import { PrismaFilmMapper } from './mappers/prisma-films-mapper';
 
 @Controller('v1/films')
 export class AppController {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly ghibliService: GhibliFilmsService,
+  ) {}
 
   @Get()
   list() {
@@ -13,19 +16,13 @@ export class AppController {
   }
 
   @Post()
-  async create(@Body() body: CreateFilmBody) {
-    const { ghibli_id, title, description, producer, director, banner } = body;
+  async add() {
+    const ghibliFilms = await this.ghibliService.getStudioGhibliFilms();
+    const prismaGhibliFilms = ghibliFilms.map(PrismaFilmMapper.toPrisma);
 
     await this.prisma.film.createMany({
-      data: {
-        id: randomUUID(),
-        ghibli_id,
-        title,
-        description,
-        producer,
-        director,
-        banner,
-      },
+      data: prismaGhibliFilms,
+      skipDuplicates: true,
     });
   }
 }
