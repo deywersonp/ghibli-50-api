@@ -1,20 +1,21 @@
 import { randomUUID } from 'node:crypto';
+import { Replace } from '../../helpers/Replace';
 
 export interface FilmProps {
   ghibli_id: string;
   title: string;
-  image: string;
+  banner: string;
   description: string;
   director: string;
   producer: string;
   created_at: Date;
 }
 
-export class Films {
+export class Film {
   private _id: string;
   private props: FilmProps;
 
-  constructor(props: FilmProps, id?: string) {
+  constructor(props: Replace<FilmProps, { created_at?: Date }>, id?: string) {
     this._id = id ?? randomUUID();
     this.props = {
       ...props,
@@ -42,12 +43,12 @@ export class Films {
     this.props.title = title;
   }
 
-  public get image() {
-    return this.props.image;
+  public get banner() {
+    return this.props.banner;
   }
 
-  public set image(image: string) {
-    this.props.image = image;
+  public set banner(banner: string) {
+    this.props.banner = banner;
   }
 
   public get description() {
