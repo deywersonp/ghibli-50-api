@@ -1,5 +1,5 @@
+import { makeFilm } from '../../../test/factories/film-factory';
 import { InMemoryFilmsRepository } from '../../../test/repositories/in-memory-films-repository';
-import { Film } from '../entities/film';
 import { AddFilmsFromStudioGhibli } from './add-films-from-studio-ghibli';
 
 describe('Add Films from Studio Ghibli', () => {
@@ -9,22 +9,9 @@ describe('Add Films from Studio Ghibli', () => {
       filmsRepository,
     );
 
-    const film1 = new Film({
-      ghibli_id: 'ghibli-id',
-      title: 'title',
-      description: 'description',
-      director: 'director',
-      producer: 'producer',
-      banner: 'banner',
-    });
-
-    const film2 = new Film({
+    const film1 = makeFilm();
+    const film2 = makeFilm({
       ghibli_id: 'ghibli-id-2',
-      title: 'title',
-      description: 'description',
-      director: 'director',
-      producer: 'producer',
-      banner: 'banner',
     });
 
     const { added_films_count } = await addFilmsFromStudioGhibli.execute({
@@ -41,23 +28,8 @@ describe('Add Films from Studio Ghibli', () => {
       filmsRepository,
     );
 
-    const film1 = new Film({
-      ghibli_id: 'ghibli-id',
-      title: 'title',
-      description: 'description',
-      director: 'director',
-      producer: 'producer',
-      banner: 'banner',
-    });
-
-    const film2 = new Film({
-      ghibli_id: 'ghibli-id',
-      title: 'title',
-      description: 'description',
-      director: 'director',
-      producer: 'producer',
-      banner: 'banner',
-    });
+    const film1 = makeFilm();
+    const film2 = makeFilm();
 
     const { added_films_count } = await addFilmsFromStudioGhibli.execute({
       films: [film1, film2],

@@ -20,9 +20,13 @@ export class AppController {
     const ghibliFilms = await this.ghibliService.getStudioGhibliFilms();
     const prismaGhibliFilms = ghibliFilms.map(PrismaFilmMapper.toPrisma);
 
-    await this.prisma.film.createMany({
+    const added_films = await this.prisma.film.createMany({
       data: prismaGhibliFilms,
       skipDuplicates: true,
     });
+
+    return {
+      added_films,
+    };
   }
 }
