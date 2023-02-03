@@ -1,11 +1,11 @@
 import { Film as RawFilm } from '@prisma/client';
-import { Film } from '../../application/entities/film';
+import { Film } from '../../../../application/entities/film';
 
 export class PrismaFilmMapper {
   static toPrisma(film: Film) {
     return {
       id: film.id,
-      ghibli_id: film.id,
+      ghibli_id: film.ghibli_id,
       title: film.title,
       banner: film.banner,
       description: film.description,
@@ -17,7 +17,7 @@ export class PrismaFilmMapper {
   static toDomain(raw: RawFilm): Film {
     return new Film(
       {
-        ghibli_id: raw.id,
+        ghibli_id: raw.ghibli_id,
         title: raw.title,
         banner: raw.banner,
         description: raw.description,

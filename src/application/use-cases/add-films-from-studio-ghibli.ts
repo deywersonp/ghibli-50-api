@@ -1,23 +1,21 @@
-import { Film } from '../entities/film';
+import { Injectable } from '@nestjs/common';
+import { StudioGhibliService } from '../services/studio-ghibli-service';
 import { FilmsRepository } from '../repositories/films-repository';
-
-interface AddFilmsFromStudioGhibliRequest {
-  films: Film[];
-}
 
 interface AddFilmsFromStudioGhibliResponse {
   added_films_count: number;
 }
-
+@Injectable()
 export class AddFilmsFromStudioGhibli {
-  constructor(private filmsRepository: FilmsRepository) {}
+  constructor(
+    private studioGhibliApi: StudioGhibliService,
+    private filmsRepository: FilmsRepository,
+  ) {}
 
-  async execute(
-    request: AddFilmsFromStudioGhibliRequest,
-  ): Promise<AddFilmsFromStudioGhibliResponse> {
-    const { films } = request;
+  async execute(): Promise<AddFilmsFromStudioGhibliResponse> {
+    const ghibliFilms = await this.studioGhibliApi.getStudioGhibliFilms();
 
-    const { count } = await this.filmsRepository.createMany(films);
+    const { count } = await this.filmsRepository.createMany(ghibliFilms);
 
     return {
       added_films_count: count,

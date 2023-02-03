@@ -1,7 +1,8 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { map, catchError, lastValueFrom } from 'rxjs';
-import { Film, FilmProps } from 'src/application/entities/film';
+import { Film } from '../../../application/entities/film';
+import { StudioGhibliService } from '../../../application/services/studio-ghibli-service';
 
 interface GhibliFilmResponse {
   id: string;
@@ -13,10 +14,10 @@ interface GhibliFilmResponse {
 }
 
 @Injectable()
-export class GhibliFilmsService {
+export class GhibliFilmsService implements StudioGhibliService {
   constructor(private readonly http: HttpService) {}
 
-  async getStudioGhibliFilms(): Promise<FilmProps[]> {
+  async getStudioGhibliFilms(): Promise<Film[]> {
     const request = this.http
       .get('https://ghibliapi.vercel.app/films?limit=50')
       .pipe(
@@ -31,6 +32,7 @@ export class GhibliFilmsService {
       );
 
     const ghibliFilms: GhibliFilmResponse[] = await lastValueFrom(request);
+    console.log({ ghibliFilms });
 
     const formattedGhibliFilms = ghibliFilms.map(
       (ghibliFilm) =>
@@ -43,6 +45,8 @@ export class GhibliFilmsService {
           producer: ghibliFilm.producer,
         }),
     );
+
+    console.log({ formattedGhibliFilms });
 
     return formattedGhibliFilms;
   }
