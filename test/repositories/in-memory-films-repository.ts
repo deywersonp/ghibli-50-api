@@ -1,5 +1,5 @@
-import { Film } from 'src/application/entities/film';
-import { FilmsRepository } from 'src/application/repositories/films-repository';
+import { Film } from '@application/entities/film';
+import { FilmsRepository } from '@application/repositories/films-repository';
 
 export class InMemoryFilmsRepository implements FilmsRepository {
   public films: Film[] = [];

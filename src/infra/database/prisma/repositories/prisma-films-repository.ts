@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Film } from '../../../../application/entities/film';
-import { FilmsRepository } from '../../../../application/repositories/films-repository';
+import { Film } from '@application/entities/film';
+import { FilmsRepository } from '@application/repositories/films-repository';
 import { PrismaFilmMapper } from '../mappers/prisma-films-mapper';
 import { PrismaService } from '../prisma.service';
 

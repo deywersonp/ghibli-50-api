@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { StudioGhibliService } from '../services/studio-ghibli-service';
-import { FilmsRepository } from '../repositories/films-repository';
+import { StudioGhibliService } from '@application/services/studio-ghibli-service';
+import { FilmsRepository } from '@application/repositories/films-repository';
 
 interface AddFilmsFromStudioGhibliResponse {
   added_films_count: number;

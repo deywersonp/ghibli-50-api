@@ -1,8 +1,8 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { map, catchError, lastValueFrom } from 'rxjs';
-import { Film } from '../../../application/entities/film';
-import { StudioGhibliService } from '../../../application/services/studio-ghibli-service';
+import { Film } from '@application/entities/film';
+import { StudioGhibliService } from '@application/services/studio-ghibli-service';
 
 interface GhibliFilmResponse {
   id: string;

@@ -1,5 +1,5 @@
 import { Film as RawFilm } from '@prisma/client';
-import { Film } from '../../../../application/entities/film';
+import { Film } from '@application/entities/film';
 
 export class PrismaFilmMapper {
   static toPrisma(film: Film) {

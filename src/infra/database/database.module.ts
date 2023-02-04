@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { FilmsRepository } from '../../application/repositories/films-repository';
+import { FilmsRepository } from '@application/repositories/films-repository';
 import { PrismaService } from './prisma/prisma.service';
 import { PrismaFilmsRepository } from './prisma/repositories/prisma-films-repository';
 

@@ -1,4 +1,4 @@
-import { Film, FilmProps } from '../../src/application/entities/film';
+import { Film, FilmProps } from '@application/entities/film';
 
 type Override = Partial<FilmProps>;
 

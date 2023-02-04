@@ -1,6 +1,6 @@
-import { Film } from 'src/application/entities/film';
-import { StudioGhibliService } from 'src/application/services/studio-ghibli-service';
-import { makeFilm } from '../factories/film-factory';
+import { Film } from '@application/entities/film';
+import { StudioGhibliService } from '@application/services/studio-ghibli-service';
+import { makeFilm } from '@test/factories/film-factory';
 
 export class InMemoryStudioGhibliService implements StudioGhibliService {
   async getStudioGhibliFilms(): Promise<Film[]> {

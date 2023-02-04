@@ -1,5 +1,5 @@
-import { InMemoryStudioGhibliService } from '../../../test/services/in-memory-studio-ghibli-service';
-import { InMemoryFilmsRepository } from '../../../test/repositories/in-memory-films-repository';
+import { InMemoryStudioGhibliService } from '@test/services/in-memory-studio-ghibli-service';
+import { InMemoryFilmsRepository } from '@test/repositories/in-memory-films-repository';
 import { AddFilmsFromStudioGhibli } from './add-films-from-studio-ghibli';
 
 describe('Add Films from Studio Ghibli', () => {

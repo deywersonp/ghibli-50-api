@@ -1,5 +1,5 @@
 import { Controller, Post } from '@nestjs/common';
-import { AddFilmsFromStudioGhibli } from '../../../application/use-cases/add-films-from-studio-ghibli';
+import { AddFilmsFromStudioGhibli } from '@application/use-cases/add-films-from-studio-ghibli';
 
 @Controller('v1/films')
 export class FilmsController {
