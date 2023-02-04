@@ -1,16 +1,16 @@
 import { Module } from '@nestjs/common';
-import { FilmsRepository } from '@application/repositories/films-repository';
+import { MoviesRepository } from '@application/repositories/movies-repository';
 import { PrismaService } from './prisma/prisma.service';
-import { PrismaFilmsRepository } from './prisma/repositories/prisma-films-repository';
+import { PrismaMoviesRepository } from './prisma/repositories/prisma-movies-repository';
 
 @Module({
   providers: [
     PrismaService,
     {
-      provide: FilmsRepository,
-      useClass: PrismaFilmsRepository,
+      provide: MoviesRepository,
+      useClass: PrismaMoviesRepository,
     },
   ],
-  exports: [FilmsRepository],
+  exports: [MoviesRepository],
 })
 export class DatabaseModule {}

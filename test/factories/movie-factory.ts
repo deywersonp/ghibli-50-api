@@ -1,9 +1,9 @@
-import { Film, FilmProps } from '@application/entities/film';
+import { Movie, MovieProps } from '@application/entities/movie';
 
-type Override = Partial<FilmProps>;
+type Override = Partial<MovieProps>;
 
-export function makeFilm(override: Override = {}) {
-  return new Film({
+export function makeMovie(override: Override = {}) {
+  return new Movie({
     ghibli_id: 'ghibli-id',
     title: 'title',
     description: 'description',

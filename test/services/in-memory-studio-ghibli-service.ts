@@ -1,16 +1,16 @@
-import { Film } from '@application/entities/film';
+import { Movie } from '@application/entities/movie';
 import { StudioGhibliService } from '@application/services/studio-ghibli-service';
-import { makeFilm } from '@test/factories/film-factory';
+import { makeMovie } from '@test/factories/movie-factory';
 
 export class InMemoryStudioGhibliService implements StudioGhibliService {
-  async getStudioGhibliFilms(): Promise<Film[]> {
-    const film1 = makeFilm();
-    const film2 = makeFilm({ ghibli_id: 'ghibli-id-2' });
-    const film3 = makeFilm({ ghibli_id: 'ghibli-id-3' });
-    const film4 = makeFilm();
+  async getStudioGhibliMovies(): Promise<Movie[]> {
+    const movie1 = makeMovie();
+    const movie2 = makeMovie({ ghibli_id: 'ghibli-id-2' });
+    const movie3 = makeMovie({ ghibli_id: 'ghibli-id-3' });
+    const movie4 = makeMovie();
 
-    const films = [film1, film2, film3, film4];
+    const movies = [movie1, movie2, movie3, movie4];
 
-    return films;
+    return movies;
   }
 }

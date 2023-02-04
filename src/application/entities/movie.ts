@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import { Replace } from '@helpers/Replace';
 
-export interface FilmProps {
+export interface MovieProps {
   ghibli_id: string;
   title: string;
   banner: string;
@@ -11,11 +11,11 @@ export interface FilmProps {
   created_at: Date;
 }
 
-export class Film {
+export class Movie {
   private _id: string;
-  private props: FilmProps;
+  private props: MovieProps;
 
-  constructor(props: Replace<FilmProps, { created_at?: Date }>, id?: string) {
+  constructor(props: Replace<MovieProps, { created_at?: Date }>, id?: string) {
     this._id = id ?? randomUUID();
     this.props = {
       ...props,

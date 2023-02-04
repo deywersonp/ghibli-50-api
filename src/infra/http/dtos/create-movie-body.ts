@@ -1,6 +1,6 @@
 import { IsNotEmpty } from 'class-validator';
 
-export class CreateFilmBody {
+export class CreateMovieBody {
   @IsNotEmpty()
   ghibli_id: string;
 

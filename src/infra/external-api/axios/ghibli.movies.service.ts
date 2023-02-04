@@ -1,10 +1,10 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { map, catchError, lastValueFrom } from 'rxjs';
-import { Film } from '@application/entities/film';
+import { Movie } from '@application/entities/movie';
 import { StudioGhibliService } from '@application/services/studio-ghibli-service';
 
-interface GhibliFilmResponse {
+interface GhibliMovieResponse {
   id: string;
   title: string;
   image: string;
@@ -14,10 +14,10 @@ interface GhibliFilmResponse {
 }
 
 @Injectable()
-export class GhibliFilmsService implements StudioGhibliService {
+export class GhibliMoviesService implements StudioGhibliService {
   constructor(private readonly http: HttpService) {}
 
-  async getStudioGhibliFilms(): Promise<Film[]> {
+  async getStudioGhibliMovies(): Promise<Movie[]> {
     const request = this.http
       .get('https://ghibliapi.vercel.app/films?limit=50')
       .pipe(
@@ -31,23 +31,20 @@ export class GhibliFilmsService implements StudioGhibliService {
         }),
       );
 
-    const ghibliFilms: GhibliFilmResponse[] = await lastValueFrom(request);
-    console.log({ ghibliFilms });
+    const ghibliMovies: GhibliMovieResponse[] = await lastValueFrom(request);
 
-    const formattedGhibliFilms = ghibliFilms.map(
-      (ghibliFilm) =>
-        new Film({
-          ghibli_id: ghibliFilm.id,
-          title: ghibliFilm.title,
-          banner: ghibliFilm.image,
-          description: ghibliFilm.description,
-          director: ghibliFilm.director,
-          producer: ghibliFilm.producer,
+    const formattedGhibliMovies = ghibliMovies.map(
+      (ghibliMovie) =>
+        new Movie({
+          ghibli_id: ghibliMovie.id,
+          title: ghibliMovie.title,
+          banner: ghibliMovie.image,
+          description: ghibliMovie.description,
+          director: ghibliMovie.director,
+          producer: ghibliMovie.producer,
         }),
     );
 
-    console.log({ formattedGhibliFilms });
-
-    return formattedGhibliFilms;
+    return formattedGhibliMovies;
   }
 }

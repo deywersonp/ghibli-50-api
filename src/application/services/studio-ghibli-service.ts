@@ -1,5 +1,5 @@
-import { Film } from '@application/entities/film';
+import { Movie } from '@application/entities/movie';
 
 export abstract class StudioGhibliService {
-  abstract getStudioGhibliFilms(): Promise<Film[]>;
+  abstract getStudioGhibliMovies(): Promise<Movie[]>;
 }

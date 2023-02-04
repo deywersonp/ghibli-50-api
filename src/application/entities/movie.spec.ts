@@ -1,8 +1,8 @@
-import { Film } from './film';
+import { Movie } from './movie';
 
-describe('Film', () => {
-  it('should be able to create a film', () => {
-    const film = new Film({
+describe('Movie', () => {
+  it('should be able to create a movie', () => {
+    const movie = new Movie({
       ghibli_id: 'ghibli-id',
       title: 'title',
       description: 'description',
@@ -11,6 +11,6 @@ describe('Film', () => {
       banner: 'banner',
     });
 
-    expect(film).toBeTruthy();
+    expect(movie).toBeTruthy();
   });
 });

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { HttpModule } from '@nestjs/axios';
-import { GhibliFilmsService } from './ghibli.films.service';
+import { GhibliMoviesService } from './ghibli.movies.service';
 import { StudioGhibliService } from '@application/services/studio-ghibli-service';
 
 @Module({
@@ -8,7 +8,7 @@ import { StudioGhibliService } from '@application/services/studio-ghibli-service
   providers: [
     {
       provide: StudioGhibliService,
-      useClass: GhibliFilmsService,
+      useClass: GhibliMoviesService,
     },
   ],
   exports: [StudioGhibliService],

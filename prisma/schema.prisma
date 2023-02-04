@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Film {
+model Movie {
   id          String   @id
   ghibli_id   String   @unique
   title       String
