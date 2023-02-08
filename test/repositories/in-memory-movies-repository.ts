@@ -21,4 +21,8 @@ export class InMemoryMoviesRepository implements MoviesRepository {
       count: this.movies.length,
     };
   }
+
+  async findAll(): Promise<Movie[]> {
+    return this.movies;
+  }
 }

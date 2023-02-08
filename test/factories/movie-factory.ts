@@ -4,7 +4,7 @@ type Override = Partial<MovieProps>;
 
 export function makeMovie(override: Override = {}) {
   return new Movie({
-    ghibli_id: 'ghibli-id',
+    ghibli_id: 'ghibli-id-1',
     title: 'title',
     description: 'description',
     director: 'director',
