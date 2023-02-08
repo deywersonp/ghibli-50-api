@@ -20,4 +20,10 @@ export class PrismaMoviesRepository implements MoviesRepository {
       count: added_movies.count,
     };
   }
+
+  async findAll(): Promise<Movie[]> {
+    const movies = await this.prisma.movie.findMany();
+
+    return movies.map(PrismaMovieMapper.toDomain);
+  }
 }
