@@ -11,6 +11,10 @@ import {
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  app.enableCors({
+    exposedHeaders: 'x-total-count',
+  });
+
   app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
@@ -35,7 +39,7 @@ async function bootstrap() {
   };
 
   const document = SwaggerModule.createDocument(app, config, options);
-  SwaggerModule.setup('api', app, document, customOptions);
+  SwaggerModule.setup('/', app, document, customOptions);
 
   await app.listen(3333);
 }

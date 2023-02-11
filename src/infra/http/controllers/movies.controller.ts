@@ -1,13 +1,14 @@
-import { Controller, Post, Get } from '@nestjs/common';
+import { Controller, Post, Get, Query, Res } from '@nestjs/common';
+import { Response } from 'express';
 import { AddMoviesFromStudioGhibli } from '@application/use-cases/add-movies-from-studio-ghibli';
 import { GetAllMovies } from '@application/use-cases/get-all-movies';
-import { MovieViewModel } from '../view-models/movie-view-model';
 import {
   ApiCreatedResponse,
   ApiOkResponse,
   ApiOperation,
   ApiTags,
 } from '@nestjs/swagger';
+import { MovieViewModel } from '../view-models/movie-view-model';
 import { MovieAddResponse } from '../response-types/movies/movie-add-response';
 import { MovieListResponse } from '../response-types/movies/movie-list-response';
 
@@ -40,17 +41,25 @@ export class MoviesController {
   @Get()
   @ApiOperation({
     summary: 'Lista filmes',
-    description: 'Retorna todos os filmes disponíveis',
+    description:
+      'Retorna até 10 filmes de forma paginada. Pode receber um parâmetro de query para informar o valor da página a ser retornada.',
   })
   @ApiOkResponse({
     description: 'The resources were returned successfully',
     type: MovieListResponse,
   })
-  async list() {
-    const { movies } = await this.getAllMovies.execute();
+  async list(
+    @Res({ passthrough: true }) res: Response,
+    @Query('page') page: number | undefined,
+  ) {
+    const { movies, next_page, total_movies_count } =
+      await this.getAllMovies.execute({ page });
+
+    res.set('x-total-count', String(total_movies_count));
 
     return {
       movies: movies.map(MovieViewModel.toHTTP),
+      next_page,
     };
   }
 }

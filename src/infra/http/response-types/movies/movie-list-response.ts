@@ -19,4 +19,7 @@ export class MovieListResponse {
     ],
   })
   movies: MovieHTTPModel[];
+
+  @ApiProperty({ type: Boolean })
+  readonly next_page: boolean;
 }
