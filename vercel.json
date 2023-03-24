@@ -11,5 +11,8 @@
       "src": "/(.*)",
       "dest": "/src/main.ts"
     }
-  ]
+  ],
+  "env": {
+    "TS_NODE_COMPILER_OPTIONS": "{\"baseUrl\":\"./\",\"paths\":{\"@application/*\":[\"./src/application/*\"], \"@helpers/*\":[\"./src/helpers/*\"], \"@infra/*\":[\"./src/infra/*\"], \"@test/*\":[\"./src/test/*\"],}}"
+  }
 }
