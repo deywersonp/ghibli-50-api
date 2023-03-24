@@ -1,4 +1,4 @@
-import { randomUUID } from 'node:crypto';
+import { ObjectId } from 'bson';
 import { Replace } from '@helpers/Replace';
 
 export interface MovieProps {
@@ -16,7 +16,7 @@ export class Movie {
   private props: MovieProps;
 
   constructor(props: Replace<MovieProps, { created_at?: Date }>, id?: string) {
-    this._id = id ?? randomUUID();
+    this._id = id ?? new ObjectId().toString();
     this.props = {
       ...props,
       created_at: props.created_at ?? new Date(),

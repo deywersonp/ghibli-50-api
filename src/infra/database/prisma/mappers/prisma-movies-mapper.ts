@@ -1,4 +1,4 @@
-import { Movie as RawMovie } from '@prisma/client';
+import { Movies as RawMovie } from '@prisma/client';
 import { Movie } from '@application/entities/movie';
 
 export class PrismaMovieMapper {

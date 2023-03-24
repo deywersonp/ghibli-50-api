@@ -6,12 +6,12 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
-model Movie {
-  id          String   @id
+model Movies {
+  id          String   @id @map("_id") @db.ObjectId
   ghibli_id   String   @unique
   title       String
   description String
